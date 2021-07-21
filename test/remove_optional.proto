@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package proto;
+option go_package = "github.com/davidae/proto-dup;proto";
+
+import "google/protobuf/timestamp.proto";
+
+message PreMessage {
+	string name = 1;
+	int64 birthDay = 2;
+	string phone = 3;
+	int32 siblings = 4;
+	bool spouse = 5;
+	double money = 6;
+	PreType type = 7;
+	PreAddress addresss = 8;
+	google.protobuf.Timestamp created_at = 9;
+	oneof values {
+		string value_s = 10;
+		int32 value_i = 11;
+		double value_d = 12;
+	}
+}
+
+message PreAddress {
+	string street = 1;
+	int32 number = 2;
+	int32 post_code = 3;
+	int32 floor = 4;
+	bool use_for_billing = 5;
+}
+
+enum PreType {
+	TYPE_UNSPECIFIED = 0;
+	TYPE_R = 1;
+	TYPE_S = 2;
+}
